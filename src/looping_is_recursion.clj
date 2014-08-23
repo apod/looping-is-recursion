@@ -8,7 +8,9 @@
     (helper 1 base exp)))
 
 (defn last-element [a-seq]
-  ":(")
+  (if (empty? (rest a-seq))
+    (first a-seq)
+    (recur (rest a-seq))))
 
 (defn seq= [seq1 seq2]
   ":(")
