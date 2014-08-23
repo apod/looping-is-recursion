@@ -38,7 +38,13 @@
       (recur (+ sum (first coll)) (inc count) (rest coll)))))
 
 (defn parity [a-seq]
-  ":(")
+  (loop [a-set #{}
+         coll  a-seq]
+    (if (empty? coll)
+      a-set
+      (let [e       (first coll)
+            new-set (if (contains? a-set e) (disj a-set e) (conj a-set e))]
+        (recur new-set (rest coll))))))
 
 (defn fast-fibo [n]
   ":(")
