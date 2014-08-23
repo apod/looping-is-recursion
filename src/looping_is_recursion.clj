@@ -28,7 +28,14 @@
      :else               (recur (inc n) (rest coll)))))
 
 (defn avg [a-seq]
-  -1)
+  (loop [sum   0
+         count 0
+         coll  a-seq]
+    (if (empty? coll)
+      (if (zero? count)
+        0
+        (/ sum count))
+      (recur (+ sum (first coll)) (inc count) (rest coll)))))
 
 (defn parity [a-seq]
   ":(")
