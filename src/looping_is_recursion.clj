@@ -47,7 +47,13 @@
         (recur new-set (rest coll))))))
 
 (defn fast-fibo [n]
-  ":(")
+  (loop [a   0
+         b   1
+         num 2]
+    (cond
+     (< n 2)   n
+     (= num n) (+ a b)
+     :else     (recur b (+ a b) (inc num)))))
 
 (defn cut-at-repetition [a-seq]
   [":("])
