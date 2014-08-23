@@ -56,14 +56,12 @@
      :else     (recur b (+ a b) (inc num)))))
 
 (defn cut-at-repetition [a-seq]
-  (loop [uniq #{}
-         res  []
+  (loop [acc  []
          coll a-seq]
     (let [e (first coll)]
       (cond
        (or (empty? coll)
-           (contains? uniq e)) res
-       :else                   (recur (conj uniq e)
-                                      (conj res e)
-                                      (rest coll))))))
+           (contains? (set acc) e)) acc
+           :else                    (recur (conj acc e)
+                                           (rest coll))))))
 
